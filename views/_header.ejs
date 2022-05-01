@@ -1,0 +1,31 @@
+<header>
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/"> Project Management </a>
+			</div>
+			<div class="collapse navbar-collapse" id="navbar">
+				<ul class="nav navbar-nav navbar-right">
+					<% if (locals.user){ %>
+					<li>
+						<a href="/users/profile"> <%= user.name %> </a>
+					</li>
+					<li>
+						<a href="/users/sign-out">Sign Out</a>
+					</li>
+					<% }else{ %>
+
+					<li>
+						<a href="/users/sign-in">Sign In</a>
+					</li>
+
+					<li>
+						<a href="/users/sign-up">Sign Up</a>
+					</li>
+
+					<% } %>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</header>
