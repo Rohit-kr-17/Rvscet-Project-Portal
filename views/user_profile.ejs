@@ -1,72 +1,38 @@
 <link rel="stylesheet" href="/css/user_profile.css" />
-<h1>Codeial / Profile Page</h1>
+<div class="container">
+	<h1><%= user.name %> | Profile Page</h1>
 
-<% if(user.id == profile_user.id){ %>
-<!-- if user matches then show the form -->
-<form action="/users/update/<%= profile_user.id %>" method="POST">
-	<input
-		type="text"
-		name="name"
-		placeholder="Your Name"
-		value="<%= profile_user.name %>"
-		required
-	/>
-	<input
-		type="email"
-		name="email"
-		placeholder="Your Email"
-		value="<%= profile_user.email %>"
-		required
-	/>
-	<input type="submit" value="Update" />
-</form>
-
-<%}else{%>
-<!-- else show only the profile info -->
-<p><%= profile_user.name %></p>
-<p><%= profile_user.email %></p>
-<%} %>
+	<p>User Name: <%= profile_user.name %></p>
+	<p>Email: <%= profile_user.email %></p>
+</div>
 <!--hello-->
 <% for(post of posts){%>
 <!--hello-->
 <% if ( profile_user.id==post.user.id){ %>
-<li>
-	<p>
-		<!--hello-->
+<div class="container">
+	<div class="card">
+		<h2 class="post-name"><%= post.name %></h2>
+		<h5 class="software">Language Used: <%= post.software %></h5>
+		<h5 class="software">Devloped By: <%= post.teamMembers %></h5>
 
-		<!--hello-->
-
-		<small>
-			<a href="/posts/destroy/<%= post.id %>">X</a>
-		</small>
-		<%= post.name %>
 		<br />
-		<%= post.software %>
-		<br />
-		<%= post.content %>
-		<br />
-		<small> <%= post.user.name %> </small>
-	</p>
+		<h5 class="software">Description:</h5>
+		<div class="content"><p><%= post.content %></p></div>
 
-	<div class="post-comments">
-		<% if (locals.user){ %>
-		<form action="/comments/create" method="POST">
-			<input
-				type="text"
-				name="content"
-				placeholder="Type Here to add comment..."
-				required
-			/>
-			<input type="hidden" name="post" value="<%= post._id %>" />
-			<input type="submit" value="Add Comment" />
-		</form>
+		<br />
+		<a class="software" href="<%= post.link %>">link</a>
 
-		<div class="post-comments-list">
-			<ul id="post-comments-<%= post._id %>">
-				<% for (comment of post.comments){%> <%- include('_comment') -%> <%} %>
-			</ul>
+		<div class="username">
+			<small>
+				<%= post.user.name %> <% if (locals.user && locals.user.id ==
+				post.user.id){ %>
+				<small>
+					<a href="/posts/destroy/<%= post.id %>">Delete</a>
+				</small>
+				<% } %></small
+			>
 		</div>
-		<% } %>
 	</div>
-</li>
+</div>
+
 <% } %> <%} %>

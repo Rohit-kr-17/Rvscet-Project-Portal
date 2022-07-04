@@ -4,9 +4,11 @@ const Comment = require("../models/comment");
 module.exports.create = async function (req, res) {
 	try {
 		await Post.create({
-			name: req.body.content,
-			software: req.body.content,
+			name: req.body.name,
+			software: req.body.software,
 			content: req.body.content,
+			link: req.body.link,
+			teamMembers: req.body.teamMembers,
 			user: req.user._id,
 		});
 

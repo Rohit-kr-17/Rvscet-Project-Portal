@@ -14,10 +14,17 @@ const postSchema = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
+		link: {
+			type: String,
+		},
+		teamMembers: {
+			type: String,
+		},
 		user: {
 			type: mongoose.Schema.Types.ObjectId,
 			ref: "User",
 		},
+
 		// include the array of ids of all comments in this post schema itself
 		comments: [
 			{

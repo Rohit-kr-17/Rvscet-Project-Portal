@@ -1,17 +1,38 @@
 <li>
-	<p>
-		<% if (locals.user && locals.user.id == post.user.id){ %>
-		<small>
-			<a href="/posts/destroy/<%= post.id %>">X</a>
-		</small>
-		<% } %> <%= post.name %>
+	<div class="card">
+		<h2 class="post-name"><%= post.name %></h2>
 		<br />
-		<%= post.software %>
+		<h4 class="software"><%= post.software %></h4>
+		<h4 class="software"><%= post.teamMembers %></h4>
+
 		<br />
-		<%= post.content %>
+		<div class="content"><p><%= post.content %></p></div>
+
 		<br />
-		<small> <%= post.user.name %> </small>
-	</p>
+		<a class="software" href="<%= post.link %>">link</a>
+
+		<div class="username">
+			<small>
+				<%= post.user.name %> <% if (locals.user && locals.user.id ==
+				post.user.id){ %>
+				<small>
+					<a href="/posts/destroy/<%= post.id %>">Delete</a>
+				</small>
+				<% } %></small
+			>
+		</div>
+		<hr />
+		<h2>Comments</h2>
+		<div class="comments" onclick="myfunction()">
+			<div class="post-comments-list">
+				<ul id="post-comments-<%= post._id %>">
+					<% for (comment of post.comments){%> <%- include('_comment') -%> <%}
+					%>
+				</ul>
+			</div>
+		</div>
+	</div>
+
 	<div class="post-comments">
 		<% if (locals.user){ %>
 		<form action="/comments/create" method="POST">
@@ -26,11 +47,10 @@
 		</form>
 
 		<% } %>
-
-		<div class="post-comments-list">
-			<ul id="post-comments-<%= post._id %>">
-				<% for (comment of post.comments){%> <%- include('_comment') -%> <%} %>
-			</ul>
-		</div>
 	</div>
 </li>
+<script>
+	function myFunction() {
+		console.log("hello");
+	}
+</script>

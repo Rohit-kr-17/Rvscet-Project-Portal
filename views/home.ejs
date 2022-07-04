@@ -1,42 +1,24 @@
 <link rel="stylesheet" href="/css/home.css" />
-
+<div class="jumbotron feature">
+	<div class="container">
+		<h1><%= title %></h1>
+		<p>Post your project here</p>
+	</div>
+</div>
 <div id="home-container">
 	<section id="feed-posts">
-		<h4>Posts</h4>
-		<% if(locals.user){ %>
-		<form action="/posts/create" id="new-post-form" method="POST">
-			<textarea
-				name="name"
-				cols="30"
-				rows="1"
-				placeholder="Type Here..."
-				required
-			></textarea>
-			<textarea
-				name="software"
-				cols="30"
-				rows="1"
-				placeholder="Type Here..."
-				required
-			></textarea>
-			<textarea
-				name="content"
-				cols="30"
-				rows="3"
-				placeholder="Type Here..."
-				required
-			></textarea>
-			<input type="submit" value="Post" />
-		</form>
-		<% } %>
-
-		<div id="posts-list-container">
-			<ul>
-				<% for(post of posts){ %> <%- include('_post') -%> <%} %>
-			</ul>
+		<div class="">
+			<h4 class="text-center">Posts</h4>
+			<% if(locals.user){ %>
+			<a href="posts/createpost">click here</a>
+			<% } %>
+			<div id="posts-list-container">
+				<ul>
+					<% for(post of posts){ %> <%- include('_post') -%> <%} %>
+				</ul>
+			</div>
 		</div>
 	</section>
-
 	<section id="user-friends">
 		<h4>Friends</h4>
 		<% for(u of all_users){%>

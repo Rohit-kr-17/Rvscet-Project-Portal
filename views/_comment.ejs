@@ -1,15 +1,12 @@
 <li>
-        <p>
-            <% if (locals.user && locals.user.id == comment.user.id){ %>
-            <small>
-                <a href="/comments/destroy/<%= comment.id %>">X</a>
-            </small>
-            <% } %>
-            <%= comment.content %>
-            <br>
-            <small>
-                <%= comment.user.name %>
-            </small>
-        </p>    
-
+	<p>
+		<h4><%= comment.content %></h4>
+	
+		<small><h5> <%= comment.user.name %><% if (locals.user && locals.user.id == comment.user.id){ %>
+		<small>
+			<a href="/comments/destroy/<%= comment.id %>">Delete</a>
+		</small></h5>
+		<% } %> </small>
+		
+	</p>
 </li>
