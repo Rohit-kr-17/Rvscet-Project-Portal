@@ -1,5 +1,9 @@
 const User = require("../models/user");
 const Post = require("../models/post");
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
+const myPlaintextPassword = "s0//P4$$w0rD";
+const someOtherPlaintextPassword = "not_bacon";
 // let's keep it same as before
 module.exports.profile = async function (req, res) {
 	try {
@@ -70,13 +74,26 @@ module.exports.create = function (req, res) {
 		}
 
 		if (!user) {
-			User.create(req.body, function (err, user) {
-				if (err) {
-					req.flash("error", err);
-					return;
-				}
+			let users = {
+				name: req.body.name,
+				email: req.body.email,
+				password: req.body.password,
+				confirm_password: req.body.confirm_password,
+			};
+			bcrypt.hash(myPlaintextPassword, saltRounds, function (err, hash) {
+				// Store hash in your password DB.
+				users.password = hash;
+				users.confirm_password = hash;
+				console.log(users.password);
+				User.create(users, function (err, user) {
+					console.log(users);
+					if (err) {
+						req.flash("error", err);
+						return;
+					}
 
-				return res.redirect("/users/sign-in");
+					return res.redirect("/users/sign-in");
+				});
 			});
 		} else {
 			req.flash("success", "You have signed up, login to continue!");
