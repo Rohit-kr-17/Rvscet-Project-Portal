@@ -17,6 +17,9 @@ const postSchema = new mongoose.Schema(
 		link: {
 			type: String,
 		},
+		driveLink: {
+			type: String,
+		},
 		teamMembers: {
 			type: String,
 		},

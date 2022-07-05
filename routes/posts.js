@@ -12,6 +12,6 @@ router.get(
 	postsController.destroy
 );
 router.get("/createpost", passport.checkAuthentication, createPost.createpost);
-router.get("/viewpost", passport.checkAuthentication, createPost.viewpost);
+router.get("/viewpost/:id", passport.checkAuthentication, createPost.viewpost);
 
 module.exports = router;

@@ -9,10 +9,11 @@
 	<section id="feed-posts">
 		<div class="">
 			<h4 class="text-center">Posts</h4>
-			<% if(locals.user){ %>
-			<a href="posts/createpost">click here</a>
-			<% } %>
+
 			<div id="posts-list-container">
+				<% if(locals.user){ %>
+				<a class="add-post" href="posts/createpost">Add Post</a>
+				<% } %>
 				<ul>
 					<% for(post of posts){ %> <%- include('_post') -%> <%} %>
 				</ul>
@@ -28,3 +29,5 @@
 		<% } %>
 	</section>
 </div>
+
+        <%- include('_footer'); %>

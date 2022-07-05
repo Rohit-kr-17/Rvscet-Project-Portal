@@ -8,6 +8,7 @@ module.exports.create = async function (req, res) {
 			software: req.body.software,
 			content: req.body.content,
 			link: req.body.link,
+			driveLink: req.body.driveLink,
 			teamMembers: req.body.teamMembers,
 			user: req.user._id,
 		});

@@ -234,7 +234,9 @@ fieldset[disabled] .btn-primary.active {
 
 body {
 	font-family: "Poppins", sans-serif;
-	height: 100vh;
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
 }
 
 a {
@@ -575,4 +577,32 @@ textarea::placeholder {
 .create-post-text {
 	color: #dd845a;
 	font-size: 18px;
+}
+.add-post {
+	padding: 5px;
+	margin-left: 40px;
+	margin-bottom: 5px;
+	border: 1px solid #dce8f1;
+	border-radius: 5px;
+}
+.add-post:hover {
+	padding: 5px;
+	margin-left: 40px;
+	margin-bottom: 5px;
+	color: #ffffff;
+	background-color: #39ace7;
+	border: 1px solid #71b7ed;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-ms-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	-webkit-border-radius: 5px 5px 5px 5px;
+	border-radius: 5px 5px 5px 5px;
+}
+.user-comment {
+	color: #0d0d0d;
+}
+.space-inbetween {
+	padding-left: 8px;
 }
