@@ -10,7 +10,13 @@
 			<div class="content"><p><%= post.content %></p></div>
 
 			<br />
-			<a class="software" href="<%= post.link %>">link</a>
+			<div>
+				<a class="software" href="<%= post.link %>">View Project</a>
+				<span class="space-inbetween">|</span>
+				<a class="software" href="<%= post.driveLink %>"
+					>Download Files <i class="fa-solid fa-download"></i
+				></a>
+			</div>
 
 			<div class="username">
 				<small>
@@ -53,4 +59,4 @@
 	</li>
 </div>
 
-        <%- include('_footer'); %>
+<%- include('_footer'); %>
