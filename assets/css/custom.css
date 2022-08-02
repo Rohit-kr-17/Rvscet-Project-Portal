@@ -606,3 +606,7 @@ textarea::placeholder {
 .space-inbetween {
 	padding-left: 8px;
 }
+.mini-details {
+	font-size: small;
+	color: #ccc;
+}
